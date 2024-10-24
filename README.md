@@ -21,7 +21,6 @@ This repository owns by Team 1.
 |송민정| min941210@gmail.com | [smj1219](https://github.com/smj1219) | Backend Developer |
 |양유준| a64381543@gmail.com | [YuJun99](https://github.com/YuJun99) | Backend Developer |
 |홍민기| hellohmk98@gmail.com | [raihong](https://github.com/raihong) | Frontend Developer |
-﻿
 
 ## Project Communication
 
