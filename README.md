@@ -22,6 +22,9 @@ This repository owns by Team 1.
 |양유준| a64381543@gmail.com | [YuJun99](https://github.com/YuJun99) | Backend Developer |
 |홍민기| hellohmk98@gmail.com | [raihong](https://github.com/raihong) | Frontend Developer |
 
+## Most Used Languages
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=YuJun99)](https://github.com/anuraghazra/github-readme-stats)
+
 ## Project Communication
 
 [Notion Link](https://tinted-carp-1b8.notion.site/Acorn-Team-Project-11cb3aae915f81b1ad52d34f41932c5f)
