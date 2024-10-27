@@ -3,11 +3,15 @@
 <mapper namespace="dietList">
 
 	<select id="getList" parameterType="DietListDto" resultType="DietListDto">
-		
-		SELECT diet_id, food, calories, carbs, protein, fat
-		FROM dietlist
-		WHERE food LIKE '%'||#{keyword}||'%'
-		ORDER BY food asc
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT diet_id, food, calories, carbs, protein, fat
+				FROM dietlist
+				WHERE food LIKE '%'||#{keyword}||'%'
+				ORDER BY food asc) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 		
 	<insert id="insert">
@@ -15,8 +19,8 @@
 		VALUES (diet_id_seq.NEXTVAL, #{food}, #{calories}, #{carbs}, #{protein}, #{fat})
 	</insert>
 	
-	<insert id="managerInsert">
-		INSERT INTO dietList(diet_id, food, calories, carbs, protein, fat)
-		VALUES (diet_id_seq.NEXTVAL, #{food}, #{calories}, #{carbs}, #{protein}, #{fat})
-	</insert>
+	<select id="getCount" resultType="int">
+		SELECT COUNT(diet_id)
+		FROM dietlist
+	</select>
 </mapper>

@@ -7,6 +7,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,11 +51,11 @@ public class TrainerServiceTest {
         when(trainerDao.getData(1)).thenReturn(dto);
 
         // When
-        TrainerDto result = trainerService.addTrainer(dto);
+        boolean result = trainerService.addTrainer(dto);
 
         // Then
         assertNotNull(result);
-        assertEquals(1, result.getTrainer_num());
+        assertEquals(1, result);
         verify(trainerDao, times(1)).insert(dto);
         verify(trainerDao, times(1)).getData(1);
 	}
@@ -111,7 +112,7 @@ public class TrainerServiceTest {
         List<TrainerDto> trainerList = List.of(new TrainerDto(), new TrainerDto());
         when(trainerDao.getList()).thenReturn(trainerList);
 
-        List<TrainerDto> result = trainerService.selectList();
+        List<Map<String, Object>> result = trainerService.selectList();
 
         assertEquals(trainerList, result);
     }

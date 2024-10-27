@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Modal, Button, Card, Row, Col, InputGroup, DropdownButton, Dropdown, Form, Table } from "react-bootstrap";
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { Modal, Button, Card, Row, Col, InputGroup, DropdownButton, Dropdown, Form, Table, Pagination } from "react-bootstrap";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Checkbox, Radio } from "antd";
@@ -35,6 +35,14 @@ function MemberDietJournalAdd() {
     const [showModal, setShowModal] = useState(false);
     const handleShow = () => setShowModal(true);
    
+    const [pageInfo, setPageInfo]=useState({
+        list:[]
+    })
+    // "/cafes?pageNum=x" 에서 pageNum 을 추출하기 위한 Hook   
+    const [params, setParams]=useSearchParams({pageNum:1})
+    //페이징 숫자를 출력할때 사용하는 배열을 상태값으로 관리 하자
+    const [pageArray, setPageArray]=useState([])
+
     useEffect(() => {
         //selectedDate에서 년월일 추출하는 식
         const date = new Date(selectedDate);
@@ -44,16 +52,38 @@ function MemberDietJournalAdd() {
         setFormattedDate(`${year}-${month}-${day}`);
       }, [selectedDate]);
 
-    useEffect(() => {
-        axios.get('/dietlist')
+      useEffect(()=>{
+        //query 파라미터 값을 읽어와 본다
+        let pageNum=params.get("pageNum")
+        //만일 존재 하지 않는다면 1 페이지로 설정
+        if(pageNum==null)pageNum=1
+        if(isNaN(pageNum))pageNum=1
+        //해당 페이지의 내용을 원격지 서버로 부터 받아온다 
+        refresh(pageNum)
+    }, [params.get("pageNum"), token, selectedDate])
+
+    const refresh = (pageNum) => {
+        axios.get(`/dietlist?pageNum=${pageNum}`)
             .then(res => {
-                setDietList([]);
+                setPageInfo(res.data)
+                //페이징 처리에 관련된 배열을 만들어서 state 로 넣어준다.
+                const result=range(res.data.startPageNum, res.data.endPageNum)
+                setPageArray(result)
                 if (Array.isArray(res.data.list)) {
                     setDietList(res.data.list);
                 }
             })
             .catch(error => console.log(error));
-    }, [token, selectedDate]);
+    };
+
+        //페이징 UI 를 만들때 사용할 배열을 리턴해주는 함수 
+        function range(start, end) {
+            const result = [];
+            for (let i = start; i <= end; i++) {
+                result.push(i);
+            }
+            return result;
+        }
 
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -144,6 +174,10 @@ function MemberDietJournalAdd() {
 
     };
 
+    // navigate() 함수를 이용해서 페이지를 변경하는 함수
+    const move = (pageNum=1)=>{
+        setParams({ pageNum });
+    }
 
     return (
         <div>
@@ -220,7 +254,18 @@ function MemberDietJournalAdd() {
                                     ))}
                                 </tbody>
                             </Table>
-                            
+                            <Pagination className="mt-3">
+                                <Pagination.Item onClick={()=>move(pageInfo.startPageNum-1)} disabled={pageInfo.startPageNum === 1}>&laquo;</Pagination.Item>
+                                {
+                                    pageArray.map(item=>(
+                                        <Pagination.Item onClick={()=>move(item)} key={item} 
+                                            active={pageInfo.pageNum === item}>
+                                            {item}
+                                        </Pagination.Item>
+                                    ))
+                                }
+                                <Pagination.Item onClick={()=>move(pageInfo.endPageNum+1)} disabled={pageInfo.endPageNum >= pageInfo.totalPageCount}>&raquo;</Pagination.Item>            
+                            </Pagination>
                         </Card.Body>
                     </Card>
                 </Col>

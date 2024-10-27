@@ -16,14 +16,14 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.fitconnect.auth.PrincipalDetails;
+import com.fitconnect.dto.MemberCalendarDto;
 import com.fitconnect.dto.UserDto;
-import com.fitconnect.dto.memberCalendarDto;
-import com.fitconnect.repository.memberCalendarDao;
+import com.fitconnect.repository.MemberCalendarDao;
 
-class memberCalendarServiceTest {
+class MemberCalendarServiceTest {
 
     @Mock
-    private memberCalendarDao dao;
+    private MemberCalendarDao dao;
 
     @Mock
     private Authentication authentication;
@@ -35,7 +35,7 @@ class memberCalendarServiceTest {
     private SecurityContext securityContext;
 
     @InjectMocks
-    private memberCalendarServiceImpl service;
+    private MemberCalendarServiceImpl service;
 
     @BeforeEach
     void setUp() {
@@ -66,11 +66,11 @@ class memberCalendarServiceTest {
     @Test
     void testGetAll() {
         // Given
-        List<memberCalendarDto> mockList = List.of(new memberCalendarDto());
+        List<MemberCalendarDto> mockList = List.of(new MemberCalendarDto());
         when(dao.getList(anyInt())).thenReturn(mockList);
 
         // When
-        List<memberCalendarDto> result = service.getAll();
+        List<Map<String, Object>> result = service.getAll();
 
         // Then
         assertNotNull(result);
@@ -81,8 +81,8 @@ class memberCalendarServiceTest {
     @Test
     void testGetOne() {
         // Given
-        memberCalendarDto mockDto = new memberCalendarDto();
-        when(dao.getData(any(memberCalendarDto.class))).thenReturn(mockDto);
+        MemberCalendarDto mockDto = new MemberCalendarDto();
+        when(dao.getData(any(MemberCalendarDto.class))).thenReturn(mockDto);
 
         // When
         Map<String, Object> result = service.getOne(mockDto);
@@ -90,13 +90,13 @@ class memberCalendarServiceTest {
         // Then
         assertNotNull(result);
         assertEquals(mockDto, result.get("dto"));
-        verify(dao).getData(any(memberCalendarDto.class));
+        verify(dao).getData(any(MemberCalendarDto.class));
     }
 
     @Test
     void testInsert() {
         // Given
-        memberCalendarDto mockDto = new memberCalendarDto();
+        MemberCalendarDto mockDto = new MemberCalendarDto();
 
         // When
         service.insert(mockDto);
@@ -109,7 +109,7 @@ class memberCalendarServiceTest {
     @Test
     void testUpdate() {
         // Given
-        memberCalendarDto mockDto = new memberCalendarDto();
+        MemberCalendarDto mockDto = new MemberCalendarDto();
 
         // When
         service.update(mockDto);
@@ -122,12 +122,13 @@ class memberCalendarServiceTest {
     @Test
     void testDelete() {
         // Given
-        int m_calendar_id = 100;
+        MemberCalendarDto dto = new MemberCalendarDto();
+        dto.setM_calendar_id(100);
 
         // When
-        service.delete(m_calendar_id);
+        service.deleteByDate(dto);
 
         // Then
-        verify(dao).delete(1, m_calendar_id); // 사용자가 1로 설정되었고, 해당 ID로 삭제 요청 확인
+        verify(dao).delete(1, dto.getM_calendar_id()); // 사용자가 1로 설정되었고, 해당 ID로 삭제 요청 확인
     }
 }

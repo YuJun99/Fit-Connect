@@ -49,10 +49,10 @@ public class MemberServiceTest {
 		dto.setMember_gender("MAN");
 		when(memberDao.getData(1)).thenReturn(dto);
 		
-		MemberDto result = memberService.addMember(dto);
+		boolean result = memberService.addMember(dto);
 		
 		assertNotNull(result);
-		assertEquals(1, result.getMember_num());
+		assertEquals(1, result);
 		verify(memberDao, times(1)).insert(dto);
 		verify(memberDao, times(1)).getData(1);
 	}

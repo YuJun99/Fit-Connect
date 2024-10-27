@@ -38,9 +38,8 @@ public class DietListController {
 	@GetMapping("/dietlist")
 	public Map<String, Object> list( DietListDto dto){
 		dto.setKeyword(dto.getKeyword());
-		List<DietListDto> list = service.getList(dto);
-		
-		return Map.of("list", list);
+		Map<String, Object> list = service.getList(dto);
+		return list;
 	}
 	
 	/**********************************************************************
@@ -59,25 +58,6 @@ public class DietListController {
 	public Map<String, Object> insert(@RequestBody DietListDto dto) {
 		boolean isSuccess = service.insert(dto);
 		
-		return Map.of("isSuccess", isSuccess);
-	}
-	
-	/**********************************************************************
-	 * <PRE> * 메소드 정보 *
-	 * 1. MethodName	: ManagerInsert
-	 * 2. ClassName		: DietListController
-	 * 3. 작성자			: uJuu
-	 * 4. 작성일			: 2024. 9. 28. 오후 5:48:05
-	 * 5. 설명			: 관리자가 별개로 음식리스트를 등록
-	 * </PRE>
-	 * 		@return Map<String,Object>
-	 * 		@param dto
-	 * 		@return
-	**********************************************************************/
-	@PostMapping("/dietlist/manager")
-	public Map<String, Object> managerInsert(@RequestBody DietListDto dto){
-		
-		boolean isSuccess = service.insert(dto);
 		return Map.of("isSuccess", isSuccess);
 	}
 	

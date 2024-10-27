@@ -32,15 +32,9 @@ public class DietListDaoImpl implements DietListDao{
 	}
 
 	@Override
-
-	public boolean managerInsert(DietListDto dto) {
-
-		int result = session.insert("dietList.managerInsert", dto);
-		if(result > 0) {
-			return true;
-		}else {
-			return false;
-		}
+	public int getCount() {
+		
+		return session.selectOne("dietList.getCount");
 	}
 
 }

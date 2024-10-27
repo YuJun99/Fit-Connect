@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,7 @@ class DietListServiceTest {
 
         // When
         when(dao.getList(any(DietListDto.class))).thenReturn(mockList);
-        List<DietListDto> result = service.getList(mockDto);
+        Map<String, Object> result = service.getList(mockDto);
 
         // Then
         assertNotNull(result);  // 결과가 null이 아니어야 함
@@ -56,18 +57,5 @@ class DietListServiceTest {
 
         // Then
         verify(dao).insert(mockDto);  // DAO의 insert 메서드가 호출되었는지 확인
-    }
-
-    @Test
-    void testManagerInsert() {
-        // Given
-        DietListDto mockDto = new DietListDto();
-        mockDto.setKeyword("managerTest");
-
-        // When
-        service.ManagerInsert(mockDto);
-
-        // Then
-        verify(dao).ManagerInsert(mockDto);  // DAO의 ManagerInsert 메서드가 호출되었는지 확인
     }
 }
