@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 3000 600" width="100%" height="100%">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 335.16px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #040000;
+        font-family: ForteMT, Forte;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-5, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-size: 441.44px;
+      }
+
+      .cls-6 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 18px;
+      }
+
+      .cls-4 {
+        font-family: CapucineBasic-BlackItalic, 'Capucine Basic';
+        font-size: 213.09px;
+        font-style: italic;
+        font-weight: 800;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.7.1, SVG Export Plug-In . SVG Version: 1.2.0 Build 142)  -->
+  <g>
+    <g id="_레이어_1" data-name="레이어_1">
+      <path class="cls-5" d="M515.02,291.51c0,120.53-97.69,218.23-218.23,218.23s-218.23-97.69-218.23-218.23,97.69-218.23,218.23-218.23c103.88,0,184.79,78.9,209.6,157.2,9.42,29.78,8.66,53.75,8.66,61.06l-.04-.04Z"/>
+      <path class="cls-5" d="M279.55,252.94"/>
+      <g>
+        <g class="cls-3">
+          <text class="cls-2" transform="translate(114.71 407.85)"><tspan x="0" y="0">F</tspan></text>
+        </g>
+        <g class="cls-3">
+          <text class="cls-1" transform="translate(279.55 470.32)"><tspan x="0" y="0">C</tspan></text>
+        </g>
+      </g>
+      <path class="cls-6" d="M560.45,291.51c0,145.61-118.03,263.64-263.64,263.64S33.18,437.12,33.18,291.51,151.2,27.87,296.81,27.87c125.5,0,223.24,95.29,253.18,189.87,11.39,35.99,10.45,64.91,10.45,73.76Z"/>
+      <g class="cls-3">
+        <text class="cls-4" transform="translate(634.5 361.95)"><tspan x="0" y="0">Fit Connect</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

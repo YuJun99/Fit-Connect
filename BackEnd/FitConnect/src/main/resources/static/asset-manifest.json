@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e8d9fcfa.css",
+    "main.js": "/static/js/main.bbcd9b72.js",
+    "static/js/488.e028a2b0.chunk.js": "/static/js/488.e028a2b0.chunk.js",
+    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
+    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
+    "static/media/bg3.jpg": "/static/media/bg3.5668e1f0dc365cf13f41.jpg",
+    "static/media/bg1.jpg": "/static/media/bg1.537e9bd5e71025651f68.jpg",
+    "static/media/bg4.jpg": "/static/media/bg4.62319ddef31f1a1a1696.jpg",
+    "static/media/bg2.jpg": "/static/media/bg2.94ab4b600ddb7a0bfd60.jpg",
+    "static/media/searchicon.png": "/static/media/searchicon.ee3c8579ef09b80dfd1c.png",
+    "static/media/profile.png": "/static/media/profile.4084cea7fc262f648c56.png",
+    "static/media/user2.jpg": "/static/media/user2.ddd14b391c00b67bd050.jpg",
+    "static/media/user5.jpg": "/static/media/user5.847ea5a9e28e437d4624.jpg",
+    "static/media/user1.jpg": "/static/media/user1.f3714f3391c9a5903799.jpg",
+    "static/media/user3.jpg": "/static/media/user3.a57a5165b2d1891852db.jpg",
+    "static/media/user4.jpg": "/static/media/user4.6ac95ef9bc0c027733ea.jpg",
+    "static/media/FitConnectLogo.svg": "/static/media/FitConnectLogo.a207c9564df76f54f65c3c2672188e63.svg",
+    "index.html": "/index.html",
+    "main.e8d9fcfa.css.map": "/static/css/main.e8d9fcfa.css.map",
+    "main.bbcd9b72.js.map": "/static/js/main.bbcd9b72.js.map",
+    "488.e028a2b0.chunk.js.map": "/static/js/488.e028a2b0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e8d9fcfa.css",
+    "static/js/main.bbcd9b72.js"
+  ]
+}
